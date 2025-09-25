@@ -1,0 +1,250 @@
+/* Terminal styles */
+.terminal {
+    background: #1e1e1e;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace;
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+    min-height: 600px;
+    max-height: 600px;
+}
+
+.terminal-header {
+    background: #333;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #444;
+    flex-shrink: 0;
+}
+
+.terminal-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.control {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: block;
+}
+
+.control-close {
+    background: #ff5f56;
+}
+
+.control-minimize {
+    background: #ffbd2e;
+}
+
+.control-maximize {
+    background: #27ca3f;
+}
+
+.terminal-title {
+    color: #ccc;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.terminal-body {
+    background: #1e1e1e;
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.terminal-output {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+.terminal-line {
+    color: #bbbbbb;
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+    display: flex;
+    align-items: flex-start;
+    min-height: 1.4em;
+}
+
+.terminal-line.command {
+    color: #fff;
+}
+
+.terminal-line.output {
+    color: #ededed;
+    margin-left: 2rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+    position: relative;
+    padding: 2px 4px;
+    margin-left: calc(2rem - 4px);
+    border-radius: 3px;
+}
+
+.terminal-line.output.has-hint {
+    cursor: help;
+    transition: background-color 0.2s;
+}
+
+/* Left border indicator for tooltips */
+.terminal-line.output.has-hint::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 100%;
+    background-color: rgba(255, 193, 7, 0.4);
+    border-radius: 2px;
+}
+
+.terminal-line.output.has-hint:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.terminal-line.output.has-hint:hover::before {
+    background-color: rgba(255, 193, 7, 0.7);
+}
+
+.terminal-line.error {
+    color: #ff6b6b;
+    margin-left: 2rem;
+}
+
+.terminal-line.success {
+    color: #51cf66;
+    margin-left: 2rem;
+}
+
+.terminal-line.space {
+    color: transparent;
+    margin-left: 2rem;
+    cursor: default;
+    pointer-events: none;
+    min-height: 1.4em;
+}
+
+.terminal-line.space:hover {
+    background-color: transparent;
+}
+
+.prompt {
+    color: #51cf66;
+    font-weight: bold;
+    margin-right: 0.5rem;
+    user-select: none;
+}
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #333;
+    padding: 0.75rem 1rem;
+    background: #1e1e1e;
+    flex-shrink: 0;
+}
+
+.terminal-input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-family: inherit;
+    font-size: 14px;
+    flex: 1;
+    outline: none;
+    caret-color: #51cf66;
+}
+
+.terminal-input::placeholder {
+    color: #666;
+}
+
+.terminal-input:disabled {
+    color: #888;
+    cursor: not-allowed;
+}
+
+.terminal-input:disabled::placeholder {
+    color: #555;
+}
+
+/* Command highlighting */
+.command-text {
+    color: #74c0fc;
+}
+
+.command-arg {
+    color: #ffd43b;
+}
+
+.command-flag {
+    color: #ff8cc8;
+}
+
+/* Animation for typing effect */
+.typing {
+    border-right: 2px solid #51cf66;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { border-right-color: #51cf66; }
+    51%, 100% { border-right-color: transparent; }
+}
+
+/* Scroll styling for terminal output */
+.terminal-output::-webkit-scrollbar {
+    width: 8px;
+}
+
+.terminal-output::-webkit-scrollbar-track {
+    background: #2d2d2d;
+    border-radius: 4px;
+}
+
+.terminal-output::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 4px;
+}
+
+.terminal-output::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .terminal {
+        height: 400px;
+        min-height: 400px;
+        max-height: 400px;
+    }
+    
+    .terminal-output {
+        padding: 0.75rem;
+    }
+    
+    .terminal-input-line {
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .terminal-input {
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+    
+    .terminal-line {
+        font-size: 14px;
+    }
+}
+

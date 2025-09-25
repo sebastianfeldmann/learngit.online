@@ -1,0 +1,595 @@
+:root {
+    --text-color-highlighted: #6200B3;
+    --link-color: #6200B3;
+    --link-color-hover: #7c3fae;
+    --link-color-border: #4e008d;
+    --link-color-active: #6200B3;
+    --link-color-disabled: #6200B3;
+}
+:root[data-theme="light"] {
+    --bg-color: rgb(248, 249, 250);
+    --bg-color-muted: rgb(236, 236, 236);
+    --bg-color-highlighted: rgb(206, 206, 206);
+    --bg-color-transparent: rgba(248, 249, 250, 0.8);
+    --bg-border-color: rgb(227, 227, 227);
+    --text-color: black;
+    --text-color-muted: #666;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+
+}
+:root[data-theme="dark"] {
+    --bg-color: #10182c;
+    --bg-color-muted: #202539;
+    --bg-color-highlighted: #484c5c;
+    --bg-color-transparent: rgba(16, 24, 44, 0.8);
+    --bg-border-color: rgb(96, 96, 96);
+    --text-color: white;
+    --text-color-muted: #cbcbcb;
+    --shadow-color: rgba(255, 255, 255, 0.3);
+}
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+a {
+    text-decoration: none;
+}
+a:hover {
+    color: var(--link-color);
+    fill: var(--link-color);
+}
+em {
+    color: var(--text-color-highlighted);
+}
+
+.lg-navbar {
+    background-color:var(--bg-color-transparent);
+    color: var(--text-color);
+    border-bottom: 1px solid var(--bg-border-color);
+}
+
+@media (min-width: 768px) {
+    .lg-navbar {
+        backdrop-filter: blur(5px);
+    }
+    .offcanvas-body {
+        display: block !important;
+    }
+}
+
+.lg-logo {
+    text-decoration: none;
+    font-size: 1.6rem;
+    color: var(--text-color);
+    fill: var(--text-color);
+    stroke: var(--text-color);
+    vertical-align: middle;
+}
+.lg-logo:hover {
+    color: var(--link-color);
+    color: var(--link-color);
+    fill: var(--link-color);
+    stroke: var(--link-color);
+}
+.lg-logo span {
+    vertical-align: middle;
+}
+.lg-footer-nav a:hover, .link-body-emphasis:hover {
+    color: var(--link-color) !important;
+}
+.breadcrumb-item svg {
+    margin-top: -3px;
+    vertical-align: middle;
+}
+.highlighted {
+    color: var(--text-color-highlighted);
+}
+/************************************************************
+ *
+ * Home Page Styles
+ *
+ ************************************************************/
+.git-history-main {
+    stroke: #000;
+    fill: #26c3ea;
+}
+.git-history-feature1 {
+    stroke: #000;
+    fill: #18b93e;
+}
+.git-history-feature2 {
+    stroke: #000;
+    fill: #b71baa;
+}
+.git-history-path {
+    stroke: #000;
+}
+.lg-icon {
+    color: #fff;
+    background-color: var(--link-color);
+}
+.lg-icon.icon-m {
+    padding:4px;
+    border-radius:8px;
+    margin-top:-4px;
+    margin-right:7px;
+}
+.lg-icon.icon-s {
+    padding:5px;
+    border-radius:6px;
+    margin-top:-2px;
+    margin-right:4px;
+}
+
+/************************************************************
+ *
+ * Bootstrap Styles
+ *
+ ************************************************************/
+:root {
+    --bs-link-color-rgb: var(--link-color);
+    --bs-link-hover-color-rgb: var(--link-color-hover);
+    --bs-link-opacity: 1;
+}
+.btn-primary, .dropdown-menu {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--link-color);
+    --bs-btn-border-color: var(--link-color);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--link-color);
+    --bs-btn-hover-border-color: var(--link-color-border);
+    --bs-btn-focus-shadow-rgb: 49,132,253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--link-color-active);
+    --bs-btn-active-border-color: var(--link-color-border);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: var(--link-color-disabled);
+    --bs-btn-disabled-border-color: var(--link-color-disabled);
+    --bs-btn-hover-bg: var(--link-color-hover);
+    --bs-btn-hover-border-color: var(--link-color-border);
+    --bs-dropdown-link-active-bg: var(--link-color-active);
+}
+.btn-outline-primary {
+    --bs-btn-color: var(--link-color);
+    --bs-btn-border-color: var(--link-color);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--link-color);
+    --bs-btn-hover-border-color: var(--link-color-border);
+}
+.breadcrumb {
+    background:transparent !important;
+}
+
+/************************************************************
+ *
+ * Lesson Styles
+ *
+ ************************************************************/
+.nav-arrow {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--bg-color-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*box-shadow: 0 2px 10px var(--shadow-color);*/
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: var(--text-color-muted);
+    font-size: 1.5rem;
+    font-weight: bold;
+    z-index: 10;
+}
+.nav-arrow:hover {
+    background: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 4px 20px var(--shadow-color);
+    color: var(--link-color);
+}
+.nav-arrow-left {
+    left: 10px;
+}
+.nav-arrow-right {
+    right: 10px;
+}
+
+.lesson-navigation h1 {
+    margin: 0;
+    text-align: center;
+    flex: 1;
+}
+
+.lesson-container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.lesson-sidebar {
+    background: var(--bg-color);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px var(--shadow-color);
+    height: fit-content;
+}
+
+.lesson-sidebar h3 {
+    color: var(--text-color-muted);
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--bg-border-color);
+}
+
+.progress-section, .current-step-section, .hints-section {
+    margin-bottom: 2rem;
+}
+
+.progress-bar {
+    background: var(--bg-color-muted);
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, var(--link-color-hover) 0%, var(--link-color) 100%);
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+    width: 0%;
+}
+
+.progress-text {
+    font-size: 0.9rem;
+    color: var(--text-color-muted);
+}
+
+.step-info h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color-muted);
+    margin-bottom: 0.5rem;
+}
+
+.step-info p {
+    color: var(--text-color-muted);
+    font-size: 0.95rem;
+}
+
+.allowed-commands {
+    padding: 0;
+    list-style: none;
+}
+
+.allowed-commands li {
+    background: var(--bg-color-muted);
+    color: var(--text-color-muted);
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.9rem;
+    border-left: 5px solid var(--link-color);
+    position: relative;
+    cursor: help;
+    transition: all 0.4s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.allowed-commands li:hover {
+    background: var(--bg-color-highlighted);
+    color: var(--text-color-muted);
+    min-width: 100%;
+    position: relative;
+    width: fit-content;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    z-index: 1000;
+    border-left: 5px solid var(--link-color);
+}
+
+.allowed-commands li:active {
+    background: #dee2e6;
+    transform: translateY(1px);
+}
+
+/* Terminal navigation */
+.terminal-navigation {
+    margin-bottom: 20px;
+}
+
+/* Lesson complete */
+.lesson-complete {
+    background: white;
+    border-radius: 12px;
+    padding: 3rem;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    margin-top: 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+.complete-message h2 {
+    color: #28a745;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.complete-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+/* Tooltip styles */
+.tooltip {
+    position: absolute;
+    background: white;
+    color: #333;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    white-space: nowrap;
+    max-width: 586px;
+    white-space: normal;
+    z-index: 1000;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: translateY(5px);
+    transition: opacity 0.2s, transform 0.2s;
+    pointer-events: none;
+}
+
+.tooltip.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* HTML element styles within tooltips */
+.tooltip strong, .tooltip b {
+    font-weight: bold;
+    color: #222;
+}
+
+.tooltip i, .tooltip em {
+    font-style: italic;
+    color: #667eea;
+}
+
+.tooltip u {
+    color: #d73a49;
+    text-decoration: none;
+}
+
+.tooltip code {
+    background: #f1f3f4;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.85em;
+    color: #d73a49;
+}
+
+.tooltip ol {
+    list-style-type: decimal;
+    margin: 0.5rem 0;
+    padding-left: 2.2rem;
+}
+
+.tooltip li {
+    margin: 0.25rem 0;
+    line-height: 1.4;
+}
+
+.tooltip a {
+    color: #667eea;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.tooltip a:hover {
+    color: #5a67d8;
+}
+
+.tooltip br {
+    line-height: 1.6;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .lesson-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .lessons-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .lesson-sidebar {
+        position: static;
+    }
+    
+    .complete-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    /* Adjust command expansion for mobile */
+    .allowed-commands li:hover {
+        width: calc(100% + 250px);
+        max-width: 400px;
+        margin-right: -250px;
+    }
+    
+    .allowed-commands li:active {
+        background: #dee2e6;
+        transform: translateY(1px);
+    }
+    
+    /* Adjust tooltip size for mobile */
+    .tooltip {
+        width: calc(100% + 250px);
+        max-width: 400px;
+    }
+    
+    /* Category mobile styles */
+    .category-header h2 {
+        font-size: 1.25rem;
+    }
+    
+    .lesson-meta, .lesson-meta-header {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .lesson-level, .lesson-time {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.5rem;
+    }
+    
+    .breadcrumbs {
+        font-size: 0.8rem;
+    }
+    
+    .breadcrumb-separator {
+        margin: 0 0.3rem;
+    }
+    
+    /* Mobile navigation arrows */
+    .nav-arrow {
+        display: none;
+    }
+    
+    .lesson-navigation {
+        padding: 0 1rem;
+    }
+}
+
+/************************************************************
+ *
+ * List Styles
+ *
+ ************************************************************/
+.lesson-card {
+    background: var(--bg-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.lesson-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+.lesson-title {
+    color: #2c3e50;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+.lesson-description {
+    color: #6c757d;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+.lesson-meta, .lesson-meta-header {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+.lesson-level, .lesson-time {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+.lesson-level {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+.lesson-level.level-beginner {
+    background: #e8f5e8;
+    color: #2e7d32;
+}
+.lesson-level.level-intermediate {
+    background: #fff3e0;
+    color: #f57c00;
+}
+.lesson-level.level-advanced {
+    background: #fce4ec;
+    color: #c2185b;
+}
+.lesson-time {
+    background: #f3e5f5;
+    color: #7b1fa2;
+}
+.lesson-header {
+    margin-bottom: 1rem;
+}
+.lesson-header h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+}
+.lesson-header h3 a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.lesson-header h3 a:hover {
+    color: #667eea;
+}
+.lesson-description {
+    flex: 1;
+    margin-bottom: 1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+
+/************************************************************
+ *
+ * Mode Switch Styles
+ *
+ ************************************************************/
+.bi {
+    fill: currentColor;
+}
+.bd-mode-toggle {
+    z-index: 1500;
+}
+.bd-mode-toggle .bi {
+    width: 1em;
+    height: 1em;
+}
+.bd-mode-toggle .dropdown-menu .active .bi {
+    display: block!important;
+}
