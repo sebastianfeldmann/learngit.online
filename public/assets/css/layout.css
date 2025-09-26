@@ -67,7 +67,6 @@ em {
 }
 .lg-logo:hover {
     color: var(--link-color);
-    color: var(--link-color);
     fill: var(--link-color);
     stroke: var(--link-color);
 }
@@ -109,16 +108,36 @@ em {
     background-color: var(--link-color);
 }
 .lg-icon.icon-m {
-    padding:4px;
-    border-radius:8px;
-    margin-top:-4px;
-    margin-right:7px;
+    padding: 4px;
+    border-radius: 8px;
+    margin-top: -4px;
+    margin-right: 7px;
 }
 .lg-icon.icon-s {
-    padding:5px;
-    border-radius:6px;
-    margin-top:-2px;
-    margin-right:4px;
+    padding: 5px;
+    border-radius: 6px;
+    margin-top: -2px;
+    margin-right: 4px;
+}
+/************************************************************
+ *
+ * 404 Styles
+ *
+ ************************************************************/
+.e404 {
+    color: var(--text-color-muted);
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace;
+}
+.e404 h1 {
+    font-size: 14rem;
+}
+.e404 h2 {
+    font-size: 9.5rem;
+}
+.e404 p {
+    padding: 0 4rem;
+    font-size: 3.2rem;
+    text-align: justify;
 }
 
 /************************************************************
@@ -413,12 +432,12 @@ em {
     .header h1 {
         font-size: 2rem;
     }
-    
+
     .lesson-container {
         grid-template-columns: 1fr;
         gap: 1rem;
     }
-    
+
     .lessons-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
@@ -429,63 +448,63 @@ em {
     .lesson-sidebar {
         position: static;
     }
-    
+
     .complete-actions {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .btn {
         width: 100%;
         max-width: 200px;
     }
-    
+
     /* Adjust command expansion for mobile */
     .allowed-commands li:hover {
         width: calc(100% + 250px);
         max-width: 400px;
         margin-right: -250px;
     }
-    
+
     .allowed-commands li:active {
         background: #dee2e6;
         transform: translateY(1px);
     }
-    
+
     /* Adjust tooltip size for mobile */
     .tooltip {
         width: calc(100% + 250px);
         max-width: 400px;
     }
-    
+
     /* Category mobile styles */
     .category-header h2 {
         font-size: 1.25rem;
     }
-    
+
     .lesson-meta, .lesson-meta-header {
         flex-wrap: wrap;
         gap: 0.5rem;
     }
-    
+
     .lesson-level, .lesson-time {
         font-size: 0.75rem;
         padding: 0.2rem 0.5rem;
     }
-    
+
     .breadcrumbs {
         font-size: 0.8rem;
     }
-    
+
     .breadcrumb-separator {
         margin: 0 0.3rem;
     }
-    
+
     /* Mobile navigation arrows */
     .nav-arrow {
         display: none;
     }
-    
+
     .lesson-navigation {
         padding: 0 1rem;
     }
