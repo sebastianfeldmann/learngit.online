@@ -10,8 +10,12 @@ $html['image']       = 'https://example.com/image.jpg';
 
 $breadcrumb = [
     [
+        'url'  => '/categories',
+        'name' => 'Categories'
+    ],
+    [
         'url'  => '/lessons',
-        'name' => 'All Lessons'
+        'name' => 'Lessons'
     ]
 ];
 ?>

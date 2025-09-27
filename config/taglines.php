@@ -1,7 +1,7 @@
 <?php
 return [
     '<em>Stash</em> it like it’s hot',
-    '<em>Fork</em> it, fix it, push it, <em>merge</em> it',
+    '<em>Fork</em> it, fix it, <em>push</em> it, <em>merge</em> it',
     'Just <em>Git</em> good',
     '<em>Git</em> it done',
     '<em>Git</em> your shit together',

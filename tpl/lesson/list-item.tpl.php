@@ -6,6 +6,6 @@
             <span class="lesson-time"><?= htmlspecialchars($lesson['time'] ?? 'N/A') ?></span>
         </div>
         <p class="lesson-description"><?= htmlspecialchars($lesson['description']) ?></p>
-        <a href="/lesson/<?= htmlspecialchars($lesson['slug']) ?>" class="btn btn-secondary">Start Lesson</a>
+        <a href="/lesson/<?= htmlspecialchars($lesson['slug']) ?>" class="btn btn-outline-primary">Start Lesson</a>
     </div>
 </div>

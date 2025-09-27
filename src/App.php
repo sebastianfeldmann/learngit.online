@@ -23,6 +23,7 @@ class App
         $this->router->add404(\Closure::fromCallable([$this, 'handle404']));
         $this->router->addRoute('GET', '/', \Closure::fromCallable([$this, 'handleIndex']));
         $this->router->addRoute('GET', '/lessons', \Closure::fromCallable([$this, 'handleLessons']));
+        $this->router->addRoute('GET', '/categories', \Closure::fromCallable([$this, 'handleCategories']));
         $this->router->addRoute('GET', '/lesson/([a-z\-_]+)', \Closure::fromCallable([$this, 'handleLesson']));
         $this->router->addRoute('GET', '/category/([a-z\-_]+)', \Closure::fromCallable([$this, 'handleCategory']));
         $this->router->addRoute('GET', '/data/([a-z\-_]+)', \Closure::fromCallable([$this, 'handleData']));
@@ -43,6 +44,12 @@ class App
     {
         $categorizedLessons = $this->lessonReader->getAllLessonsByCategory();
         require self::TPL_DIR . 'lessons.tpl.php';
+    }
+
+    private function handleCategories(): void
+    {
+        $categories = $this->categoryReader->getCategories();
+        require self::TPL_DIR . 'categories.tpl.php';
     }
 
     private function handleLesson(string $slug): void

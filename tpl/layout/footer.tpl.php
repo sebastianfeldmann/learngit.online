@@ -35,7 +35,7 @@
                     <li class="nav-item mb-2"><a href="https://docs.captainhook.info" class="nav-link p-0 text-body-secondary">CaptainHook</a></li>
                     <li class="nav-item mb-2"><a href="https://www.phpbu.de" class="nav-link p-0 text-body-secondary">PHPBU</a></li>
                     <li class="nav-item mb-2"><a href="https://phpdepend.org" class="nav-link p-0 text-body-secondary">PHPDepend</a></li>
-                    <li class="nav-item mb-2"><a href="https://github.com/sebastianfeldmann/gitZ" class="nav-link p-0 text-body-secondary">Git</a></li>
+                    <li class="nav-item mb-2"><a href="https://github.com/sebastianfeldmann/git" class="nav-link p-0 text-body-secondary">Git</a></li>
                 </ul>
             </div>
         </div>
