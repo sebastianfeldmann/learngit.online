@@ -5,9 +5,13 @@ class GitTerminal {
         this.currentStep = 0;
         this.commandHistory = [];
         this.historyIndex = -1;
+        this.isEditorMode = false;
+        this.lineCounter = 0;
         
         this.terminalInput = document.getElementById('terminalInput');
         this.terminalOutput = document.getElementById('terminalOutput');
+        this.terminalEditor = document.getElementById('terminalEditor');
+        this.editorContent = document.getElementById('editorContent');
         this.progressFill = document.getElementById('progressFill');
         this.progressText = document.getElementById('progressText');
         this.stepTitle = document.getElementById('stepTitle');
@@ -98,8 +102,10 @@ class GitTerminal {
         this.commandHistory.push(command);
         this.historyIndex = this.commandHistory.length;
         
-        // Display the command in terminal
-        this.addTerminalLine(`$ ${command}`, 'command');
+        // Display the command in terminal (skip if in editor mode)
+        if (!this.isEditorMode) {
+            this.addTerminalLine(`$ ${command}`, 'command');
+        }
         
         // Clear input
         this.terminalInput.value = '';
@@ -143,8 +149,10 @@ class GitTerminal {
         const outputs = matchedCommandObj?.output;
 
         if (!outputs || !Array.isArray(outputs) || outputs.length === 0) {
-            // No output or empty array - add spacing
-            this.addTerminalLine('', 'space');
+            // No output or empty array - add spacing only if no editor content
+            if (!matchedCommandObj.editor) {
+                this.addTerminalLine('', 'space');
+            }
         } else {
             // Process each output item
             outputs.forEach((outputItem, index) => {
@@ -154,18 +162,25 @@ class GitTerminal {
                     return;
                 }
 
-                const text = outputItem.text || '';
-                const hint = outputItem.hint || null;
+                const text = outputItem.text;
+                const hint = outputItem.hint;
                 
                 // Skip if neither text nor hint exists
-                if (!text && !hint) {
+                if (text === undefined && hint === undefined) {
                     console.warn(`Skipping output element at index ${index}: neither text nor hint provided`, outputItem);
                     return;
                 }
                 
                 this.addTerminalLine(text, 'output', hint);
             });
-        }        
+        }
+        
+        // Check if command has editor content
+        if (matchedCommandObj.editor) {
+            this.showEditor(matchedCommandObj.editor);
+        } else {
+            this.hideEditor();
+        }
         
         // Check if command has a 'next' property for jumping
         if (matchedCommandObj.next !== undefined) {
@@ -197,7 +212,7 @@ class GitTerminal {
         if (type === 'command') {
             line.innerHTML = `<span class="prompt">$ </span><span class="command-text">${this.escapeHtml(text.substring(2))}</span>`;
         } else if (type === 'output' || type === 'error' || type === 'success' || type === 'space') {
-            line.textContent = text;
+            line.textContent = (text ? text : ' ');
             
             // Add tooltip for output hint if available
             if (hint && type === 'output') {
@@ -218,7 +233,6 @@ class GitTerminal {
     advanceStep() {
         this.currentStep++;
         this.updateUI();
-        //this.addTerminalLine('', 'space'); // Add empty line for spacing
     }
     
     jumpToStep(targetStepId) {
@@ -231,7 +245,6 @@ class GitTerminal {
             this.currentStep++;
         }
         this.updateUI();
-        this.addTerminalLine('', 'space'); // Add empty line for spacing
     }
     
     showLessonCompletion() {
@@ -395,7 +408,7 @@ class GitTerminal {
         
         // Re-enable input field
         this.terminalInput.disabled = false;
-        this.terminalInput.placeholder = 'Type your git command here...';
+        this.terminalInput.placeholder = 'Type your command here...';
         
         // Show terminal and hide completion message
         document.querySelector('.lesson-container').style.display = 'grid';
@@ -575,6 +588,84 @@ class GitTerminal {
                 }
             }
         });
+    }
+    
+    showEditor(editorData) {
+        this.initEditor();
+        
+        // Handle editor content
+        if (Array.isArray(editorData)) {
+            editorData.forEach(element => {
+                if (element.text !== undefined && element.text !== null) {
+                    this.addEditorLine(element.text, element.hint);
+                }
+            });
+        } else if (editorData.text) {
+            this.addEditorLine(editorData.text, editorData.hint);
+        }
+    }
+
+    initEditor() {
+        if (this.terminalEditor && this.editorContent) {
+            this.editorContent.innerHTML = '';
+            this.terminalEditor.style.display = 'block';
+            this.terminalOutput.style.display = 'none';
+            this.isEditorMode = true;
+            this.lineCounter = 0;
+            document.body.classList.add('editor-mode');
+        }
+    }
+    
+    addEditorLine(text, hint = null) {
+        if (this.editorContent) {
+            const textContent = text ? text : ' ';
+            const lineCount = Math.max(1, (textContent.match(/\n/g) || []).length);
+            
+            const editorLine = document.createElement('div');
+            editorLine.className = 'editor-line';
+            
+            // Create line numbers column
+            const lineNumbersContainer = document.createElement('div');
+            lineNumbersContainer.className = 'editor-line-numbers';
+            
+            // Generate line numbers using the line counter
+            const lineNumbers = [];
+            for (let i = 0; i < lineCount; i++) {
+                this.lineCounter++;
+                lineNumbers.push(this.lineCounter);
+            }
+            const lineNumberText = lineNumbers.join('\n');
+            
+            const lineNumber = document.createElement('div');
+            lineNumber.className = 'editor-line-number';
+            lineNumber.textContent = lineNumberText;
+            lineNumbersContainer.appendChild(lineNumber);
+            
+            // Create content area
+            const content = document.createElement('div');
+            content.className = 'editor-line-content';
+            content.textContent = textContent;
+            
+            // Add tooltip for editor hint if available (same as terminal output)
+            if (hint) {
+                this.setupTooltip(editorLine, hint);
+                editorLine.classList.add('has-hint');
+            }
+            
+            editorLine.appendChild(lineNumbersContainer);
+            editorLine.appendChild(content);
+            this.editorContent.appendChild(editorLine);
+        }
+    }
+    
+    hideEditor() {
+        if (this.terminalEditor) {
+            this.terminalEditor.style.display = 'none';
+            this.terminalOutput.style.display = 'block';
+            this.isEditorMode = false;
+            document.body.classList.remove('editor-mode');
+            this.scrollToBottom();
+        }
     }
 }
 

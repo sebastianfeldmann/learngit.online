@@ -53,6 +53,7 @@
 }
 
 .terminal-body {
+    position: relative;
     background: #1e1e1e;
     flex: 1;
     overflow: hidden;
@@ -70,7 +71,7 @@
 
 .terminal-line {
     color: #bbbbbb;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0;
     line-height: 1.4;
     display: flex;
     align-items: flex-start;
@@ -79,6 +80,7 @@
 
 .terminal-line.command {
     color: #fff;
+    margin: 0.25rem 0;
 }
 
 .terminal-line.output {
@@ -87,7 +89,7 @@
     white-space: pre-wrap;
     word-break: break-word;
     position: relative;
-    padding: 2px 4px;
+    padding: 0 4px;
     margin-left: calc(2rem - 4px);
     border-radius: 3px;
 }
@@ -125,7 +127,7 @@
 
 .terminal-line.success {
     color: #51cf66;
-    margin-left: 2rem;
+    margin: 2rem;
 }
 
 .terminal-line.space {
@@ -221,6 +223,108 @@
 
 .terminal-output::-webkit-scrollbar-thumb:hover {
     background: #666;
+}
+
+/************************************************************
+ *
+ * Terminal Editor Styles
+ *
+ ************************************************************/
+.terminal-editor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.4;
+    overflow: hidden;
+    z-index: 10;
+    border-radius: 0 0 8px 8px;
+}
+
+.editor-content {
+    padding: 20px;
+    height: 100%;
+    overflow-y: auto;
+    font-family: 'Courier New', monospace;
+}
+
+.editor-line {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 0.5rem;
+    line-height: 1.4;
+    margin-bottom: 0;
+    position: relative;
+    white-space: pre-wrap;
+    word-break: break-word;
+    margin-left: calc(2rem - 4px);
+    padding: 0 4px;
+    border-radius: 3px;
+    font-size: 16px;    
+}
+
+.editor-line-numbers {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding-right: 0.5rem;
+    user-select: none;
+    width: 2.5rem;
+    min-width: 2.5rem;
+}
+
+.editor-line-number {
+    color: #666;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+    line-height: 1.6;
+    white-space: pre;
+    text-align: right;
+    width: 100%;
+
+}
+
+.editor-line-content {
+    color: #d4d4d4;
+    font-family: 'Courier New', monospace;
+    line-height: 1.4;
+}
+
+/* Editor line hints - consistent with terminal output hints */
+.editor-line.has-hint {
+    cursor: help;
+    transition: background-color 0.2s;
+}
+
+/* Left border indicator for editor tooltips - same as terminal output */
+.editor-line.has-hint::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 100%;
+    background-color: rgba(255, 193, 7, 0.4);
+    border-radius: 2px;
+}
+
+.editor-line.has-hint:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.editor-line.has-hint:hover::before {
+    background-color: rgba(255, 193, 7, 0.7);
+}
+
+/* Hide $ prompt in input area when in editor mode */
+.editor-mode .terminal-input-line .prompt {
+    display: none;
 }
 
 /* Mobile responsive */

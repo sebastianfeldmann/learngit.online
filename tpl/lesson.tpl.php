@@ -41,7 +41,9 @@
         <?php endif; ?>
         <div class="lesson-header">
             <h1 class="highlighted"><?= htmlspecialchars($lesson['title']) ?></h1>
-            <p><?= htmlspecialchars($lesson['description']) ?></p>
+            <div class="lesson-description" style="width:80%; margin:0 auto;">
+                <p><?= htmlspecialchars($lesson['description']) ?></p>
+            </div>
         </div>
     </div>
 
@@ -87,6 +89,9 @@
                         <div class="terminal-title">Git Terminal</div>
                     </div>
                     <div class="terminal-body" id="terminalBody">
+                        <div class="terminal-editor" id="terminalEditor" style="display: none;">
+                            <div class="editor-content" id="editorContent"></div>
+                        </div>
                         <div class="terminal-output" id="terminalOutput">
                             <div class="terminal-line">
                                 <span class="prompt">$ </span>
@@ -96,7 +101,7 @@
                     </div>
                     <div class="terminal-input-line">
                         <span class="prompt">$ </span>
-                        <input type="text" class="terminal-input" id="terminalInput" placeholder="Type your git command here..." autocomplete="off">
+                        <input type="text" class="terminal-input" id="terminalInput" placeholder="Type your command here..." autocomplete="off">
                     </div>
                 </div>
             </div>

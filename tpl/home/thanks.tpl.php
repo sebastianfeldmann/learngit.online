@@ -47,7 +47,7 @@
                   <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-3 mb-2">
                       <svg class="lg-icon icon-s bi" width="1em" height="1em"><use xlink:href="#star"></use></svg>
                   </div>
-                  <h6 class="fw-semibold">Star the Project</h6>
+                  <h6 class="fw-semibold"><a href="https://github.com/sebastianfeldmann/learngit.online" target="_blank">Star the Project</a></h6>
                   <p class="text-muted small">Show your support on GitHub</p>
                 </div>
               </div>
@@ -65,7 +65,7 @@
                     <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-3 mb-2">
                       <svg class="lg-icon icon-s bi" width="1em" height="1em"><use xlink:href="#chat"></use></svg>
                     </div>
-                    <h6 class="fw-semibold">Give Feedback</h6>
+                    <h6 class="fw-semibold"><a href="https://github.com/sebastianfeldmann/learngit.online/issues" target="_blank">Give Feedback</a></h6>
                     <p class="text-muted small">Help improve the platform</p>
                   </div>
                 </div>

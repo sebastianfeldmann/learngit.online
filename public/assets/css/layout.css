@@ -1,10 +1,10 @@
 :root {
-    --text-color-highlighted: #6200B3;
-    --link-color: #6200B3;
-    --link-color-hover: #7c3fae;
+    --text-color-highlighted: #7d00e4;
+    --link-color: #7d00e4;
+    --link-color-hover: #9645d9;
     --link-color-border: #4e008d;
-    --link-color-active: #6200B3;
-    --link-color-disabled: #6200B3;
+    --link-color-active: #7d00e4;
+    --link-color-disabled: #7d00e4;
 }
 :root[data-theme="light"] {
     --bg-color: rgb(248, 249, 250);

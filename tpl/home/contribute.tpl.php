@@ -24,7 +24,7 @@
                     Found a typo or unclear explanation? Help us make existing lessons better. 
                     Every lesson is a YAML file that's easy to edit and contribute to.
                 </p>
-                <a href="https://github.com/sebastianfeldmann/learngit.online" class="btn btn-outline-primary">
+                <a href="https://github.com/sebastianfeldmann/learngit.online.playbook" class="btn btn-outline-primary">
                     View on GitHub
                 </a>
             </div>
@@ -40,7 +40,7 @@
                     Have an idea for a new Git lesson? Create step-by-step tutorials covering 
                     advanced Git concepts, workflows, or real-world scenarios.
                 </p>
-                <a href="https://github.com/sebastianfeldmann/learngit.online/issues/new" class="btn btn-outline-primary">
+                <a href="https://github.com/sebastianfeldmann/learngit.online.playbook/issues/new" class="btn btn-outline-primary">
                     Suggest a Lesson
                 </a>
             </div>
@@ -56,7 +56,7 @@
                     Help improve the platform itself! Fix bugs, add features, or enhance 
                     the terminal experience. Built with PHP, JavaScript, and Bootstrap.
                 </p>
-                <a href="https://github.com/sebastianfeldmann/learngit.online/pulls" class="btn btn-outline-primary">
+                <a href="https://github.com/sebastianfeldmann/learngit.online" class="btn btn-outline-primary">
                     Contribute Code
                 </a>
             </div>

@@ -25,7 +25,7 @@ $breadcrumb = [
 
         <div class="row">
             <div class="col-12">
-                <h1 class="mb-4">Git Learning Categories</h1>
+                <h1 class="mb-4">Categories</h1>
                 <p class="lead mb-5">Explore different areas of Git knowledge organized by topic and skill level.</p>
             </div>
         </div>
@@ -39,7 +39,7 @@ $breadcrumb = [
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                 <?php foreach ($categories as $categorySlug => $category): ?>
                     <div class="col">
-                        <div class="d-flex flex-column">
+                        <div class="lesson-card">
                             <div class="d-flex align-items-center mb-3">
                                 <span class="fs-1 me-3"><?= htmlspecialchars($category['icon'] ?? '📚') ?></span>
                                 <h3 class="card-title mb-0">
