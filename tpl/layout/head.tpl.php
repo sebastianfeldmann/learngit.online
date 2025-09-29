@@ -7,7 +7,7 @@
     <meta name="description" content="<?= $html['description'] ?>">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Sebastian Feldmann">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/layout.css">
     <link rel="stylesheet" href="/assets/css/terminal.css">
 
