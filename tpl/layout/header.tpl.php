@@ -45,7 +45,7 @@
                         <a class="nav-link" href="/#how-it-works">How it works</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/lessons">Lessons</a>
+                        <a class="nav-link" href="/learning">Start learning</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/#contribute">Contribute</a>

@@ -3,6 +3,7 @@
 namespace LearnGit\Reader;
 
 use LearnGit\CategoryReader;
+use LearnGit\CourseReader;
 use LearnGit\LessonReader;
 
 class Factory
@@ -18,6 +19,21 @@ class Factory
             case 'json':
             default:
                 return new CategoryJson($categoriesPath);
+        }
+    }
+
+    /**
+     * Create a CourseReader based on the configured format
+     */
+    public static function createCourseReader(?string $coursesPath = null): CourseReader
+    {
+        switch (LESSON_FORMAT) {
+            case 'yaml':
+                return new CourseYaml($coursesPath);
+            case 'json':
+            default:
+                // JSON course reader not implemented yet, return YAML as fallback
+                return new CourseYaml($coursesPath);
         }
     }
 

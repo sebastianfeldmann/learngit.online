@@ -156,4 +156,84 @@ class LessonYaml implements LessonReader
             'slug' => $lesson['next']
         ];
     }
+
+    /**
+     * Get related lessons data
+     */
+    public function getRelatedLessons(string $currentSlug): array
+    {
+        $lesson = $this->getLesson($currentSlug);
+        if (!$lesson || !isset($lesson['related']) || !is_array($lesson['related'])) {
+            return [];
+        }
+
+        $relatedLessons = [];
+        foreach ($lesson['related'] as $relatedSlug) {
+            $relatedLesson = $this->getLesson($relatedSlug);
+            if ($relatedLesson) {
+                $relatedLessons[] = [
+                    'title' => $relatedLesson['title'],
+                    'slug' => $relatedSlug
+                ];
+            }
+        }
+
+        return $relatedLessons;
+    }
+
+    /**
+     * Get lesson with all navigation data in a single efficient call
+     * Reads the current lesson once and only fetches additional lessons when needed
+     */
+    public function getLessonWithAllData(string $slug): ?array
+    {
+        $lesson = $this->getLesson($slug);
+        if (!$lesson) {
+            return null;
+        }
+
+        $result = [
+            'lesson' => $lesson,
+            'previous' => null,
+            'next' => null,
+            'related' => []
+        ];
+
+        // Only read previous lesson if it exists
+        if (isset($lesson['previous']) && $lesson['previous'] !== null) {
+            $previousLesson = $this->getLesson($lesson['previous']);
+            if ($previousLesson) {
+                $result['previous'] = [
+                    'title' => $previousLesson['title'],
+                    'slug' => $lesson['previous']
+                ];
+            }
+        }
+
+        // Only read next lesson if it exists
+        if (isset($lesson['next']) && $lesson['next'] !== null) {
+            $nextLesson = $this->getLesson($lesson['next']);
+            if ($nextLesson) {
+                $result['next'] = [
+                    'title' => $nextLesson['title'],
+                    'slug' => $lesson['next']
+                ];
+            }
+        }
+
+        // Only read related lessons if they exist
+        if (isset($lesson['related']) && is_array($lesson['related'])) {
+            foreach ($lesson['related'] as $relatedSlug) {
+                $relatedLesson = $this->getLesson($relatedSlug);
+                if ($relatedLesson) {
+                    $result['related'][] = [
+                        'title' => $relatedLesson['title'],
+                        'slug' => $relatedSlug
+                    ];
+                }
+            }
+        }
+
+        return $result;
+    }
 }

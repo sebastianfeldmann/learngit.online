@@ -155,5 +155,29 @@ class LessonJson implements LessonReader
             'slug' => $lesson['next']
         ];
     }
+
+    /**
+     * Get related lessons data
+     */
+    public function getRelatedLessons(string $currentSlug): array
+    {
+        $lesson = $this->getLesson($currentSlug);
+        if (!$lesson || !isset($lesson['related']) || !is_array($lesson['related'])) {
+            return [];
+        }
+
+        $relatedLessons = [];
+        foreach ($lesson['related'] as $relatedSlug) {
+            $relatedLesson = $this->getLesson($relatedSlug);
+            if ($relatedLesson) {
+                $relatedLessons[] = [
+                    'title' => $relatedLesson['title'],
+                    'slug' => $relatedSlug
+                ];
+            }
+        }
+
+        return $relatedLessons;
+    }
 }
 

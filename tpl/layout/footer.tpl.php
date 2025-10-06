@@ -12,11 +12,11 @@
                 <p class="text-body-secondary">&copy; <?= date('Y') ?> Sebastian Feldmann</p>
                 <ul class="lg-social-nav justify-content-start list-unstyled d-flex text-body-secondary">
                     <li class="ms-3"><a href="https://github.com/sebastianfeldmann/" aria-label="GitHub"><svg class="bi" width="24" height="24" aria-hidden="true"><use xlink:href="#github"></use></svg></a></li>
-                    <li class="ms-3"><a href="https://php.social/@movetodevnull" aria-label="Mastodon"><svg class="bi" width="24" height="24"><use xlink:href="#mastodon"></use></svg></a></li>
+                    <li class="ms-3"><a href="https://phpc.social/@movetodevnull" aria-label="Mastodon"><svg class="bi" width="24" height="24"><use xlink:href="#mastodon"></use></svg></a></li>
                     <li class="ms-3"><a href="https://instagram.com/movetodevnull" aria-label="Instagram"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
                     <li class="ms-3"><a href="https://x.com/movetodevnull" aria-label="X"><svg class="bi" width="24" height="24"><use xlink:href="#x-twitter"></use></svg></a></li>
-                    <li class="ms-3"><a href="https://www.linkedin.com/in/sebastian-feldmann/" aria-label="LinkedIn"><svg class="bi" width="24" height="24"><use xlink:href="#linkedin"></use></svg></a></li>
-                    <li class="ms-3"><a href="https://xing.com/profile/Sebastian_Feldmann" aria-label="Xing"><svg class="bi" width="24" height="24"><use xlink:href="#xing"></use></svg></a></li>
+                    <li class="ms-3"><a href="https://www.linkedin.com/in/sebastian-feldmann-dev" aria-label="LinkedIn"><svg class="bi" width="24" height="24"><use xlink:href="#linkedin"></use></svg></a></li>
+                    <li class="ms-3"><a href="https://www.xing.com/profile/Sebastian_Feldmann4/" aria-label="Xing"><svg class="bi" width="24" height="24"><use xlink:href="#xing"></use></svg></a></li>
                     <li class="ms-3"><a href="https://sebastian-feldmann.info/" aria-label="Sebastian"><svg class="bi" width="24" height="24"><use xlink:href="#sf"></use></svg></a></li>
                 </ul>
             </div>

@@ -9,9 +9,9 @@ $html['description'] = 'Learn Git';
 $html['url']         = 'https://lerngit.online/';
 $html['image']       = 'https://example.com/image.jpg';
 ?>
-<?php include self::TPL_DIR . 'layout/head.tpl.php'; ?>
+<?php include TPL_DIR . 'layout/head.tpl.php'; ?>
 
-  <?php include self::TPL_DIR . 'layout/header.tpl.php'; ?>
+  <?php include TPL_DIR . 'layout/header.tpl.php'; ?>
 
     <main class="container e404 text-center">
       <h1>Error 404</h1>
@@ -23,8 +23,8 @@ $html['image']       = 'https://example.com/image.jpg';
       </p>
     </main>
 
-  <?php include self::TPL_DIR . 'layout/switch-theme.tpl.php'; ?>
-  <?php include self::TPL_DIR . 'layout/footer.tpl.php'; ?>
+  <?php include TPL_DIR . 'layout/switch-theme.tpl.php'; ?>
+  <?php include TPL_DIR . 'layout/footer.tpl.php'; ?>
 
   <script src="/assets/js/theme-switch.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>

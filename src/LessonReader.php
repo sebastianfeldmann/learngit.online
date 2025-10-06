@@ -38,5 +38,10 @@ interface LessonReader
      * Get next lesson data
      */
     public function getNextLesson(string $currentSlug): ?array;
+
+    /**
+     * Get related lessons data
+     */
+    public function getRelatedLessons(string $currentSlug): array;
 }
 
