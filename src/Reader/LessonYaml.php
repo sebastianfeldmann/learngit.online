@@ -78,7 +78,13 @@ class LessonYaml implements LessonReader
         // Group lessons by category
         foreach ($lessons as $slug => $lesson) {
             $categorySlug = $lesson['category'];
+            // lesson should not be listed in it has no category
+            if (empty($categorySlug)) {
+                continue;
+            }
             if (!isset($grouped[$categorySlug])) {
+                
+
                 $grouped[$categorySlug] = [
                     'info' => $categories[$categorySlug] ?? ['displayName' => ucfirst($categorySlug), 'order' => 999],
                     'lessons' => []
