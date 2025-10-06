@@ -381,9 +381,20 @@ class GitTerminal {
                     
                     // Make command clickable
                     li.style.cursor = 'pointer';
-                    li.title = 'Click to use this command';
+                    li.title = 'Click to fill input and copy to clipboard';
                     li.addEventListener('click', () => {
                         this.fillCommand(commandText);
+                        
+                        // Copy to clipboard (desktop only)
+                        if (navigator.clipboard && navigator.clipboard.writeText) {
+                            navigator.clipboard.writeText(commandText)
+                                .then(() => {
+                                    this.showCopyFeedback(li);
+                                })
+                                .catch(err => {
+                                    console.warn('Failed to copy to clipboard:', err);
+                                });
+                        }
                     });
                     
                     this.allowedCommands.appendChild(li);
@@ -447,6 +458,17 @@ class GitTerminal {
             // Move cursor to the end
             this.terminalInput.setSelectionRange(commandText.length, commandText.length);
         }
+    }
+    
+    showCopyFeedback(element) {
+        // Temporarily change cursor to 'copy' for visual feedback
+        const originalCursor = element.style.cursor;
+        element.style.cursor = 'progress';
+        
+        // Restore original cursor after 1 second
+        setTimeout(() => {
+            element.style.cursor = originalCursor;
+        }, 500);
     }
     
     findStepById(stepId) {
