@@ -379,22 +379,38 @@ class GitTerminal {
                         }
                     }
                     
-                    // Make command clickable
-                    li.style.cursor = 'pointer';
-                    li.title = 'Click to fill input and copy to clipboard';
-                    li.addEventListener('click', () => {
-                        this.fillCommand(commandText);
+                    // Create command text span
+                    const commandSpan = document.createElement('span');
+                    commandSpan.className = 'command-text';
+                    commandSpan.textContent = li.textContent;
+                    commandSpan.title = 'Click to fill input';
+                    li.textContent = '';
+                    li.appendChild(commandSpan);
+                    
+                    // Create clipboard icon (desktop only)
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        const clipboardIcon = document.createElement('span');
+                        clipboardIcon.className = 'clipboard-icon';
+                        clipboardIcon.innerHTML = '<svg class="bi" width="1.2em" height="1.2em"><use xlink:href="#clipboard"></use></svg>';
+                        clipboardIcon.title = 'Copy to clipboard';
+                        li.appendChild(clipboardIcon);
                         
-                        // Copy to clipboard (desktop only)
-                        if (navigator.clipboard && navigator.clipboard.writeText) {
+                        // Click on clipboard icon - copy only
+                        clipboardIcon.addEventListener('click', (e) => {
+                            e.stopPropagation();
                             navigator.clipboard.writeText(commandText)
                                 .then(() => {
-                                    this.showCopyFeedback(li);
+                                    this.showCopyFeedback(clipboardIcon);
                                 })
                                 .catch(err => {
                                     console.warn('Failed to copy to clipboard:', err);
                                 });
-                        }
+                        });
+                    }
+                    
+                    // Click on command text - fill input only
+                    commandSpan.addEventListener('click', () => {
+                        this.fillCommand(commandText);
                     });
                     
                     this.allowedCommands.appendChild(li);
@@ -461,11 +477,11 @@ class GitTerminal {
     }
     
     showCopyFeedback(element) {
-        // Temporarily change cursor to 'copy' for visual feedback
+        // Temporarily change cursor to 'progress' for visual feedback
         const originalCursor = element.style.cursor;
         element.style.cursor = 'progress';
         
-        // Restore original cursor after 1 second
+        // Restore original cursor after 500ms
         setTimeout(() => {
             element.style.cursor = originalCursor;
         }, 500);

@@ -57,9 +57,9 @@
  ?>
  <?php include TPL_DIR . 'layout/head.tpl.php'; ?>
  
-     <?php include TPL_DIR . 'layout/header.tpl.php'; ?>
+    <?php include TPL_DIR . 'layout/header.tpl.php'; ?>
  
-     <?php include TPL_DIR . 'layout/breadcrumb.tpl.php'; ?>
+    <?php include TPL_DIR . 'layout/breadcrumb.tpl.php'; ?>
 
     <div class="container position-relative text-center mb-5 mt-4">
         <?php if ($prevUrl): ?>
