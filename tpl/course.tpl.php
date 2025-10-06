@@ -43,12 +43,11 @@ $breadcrumb = [
         <!-- Lessons List -->
         <?php if (!empty($lessons)): ?>
             <div class="lessons-section">
-                <h2 class="mb-4">📚 Course Lessons</h2>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th style="width: 50px;">#</th>
+                                <th style="width: 50px;" class="text-center">#</th>
                                 <th>Lesson</th>
                                 <th style="width: 120px;">Level</th>
                                 <th style="width: 120px;">Time</th>
