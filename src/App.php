@@ -40,7 +40,7 @@ class App
         $this->router->addRoute('GET', '/course/([0-9a-z\-_]+)', new CourseController($this->courseReader, $this->lessonReader));
         $this->router->addRoute('GET', '/lesson/([0-9a-z\-_]+)', new LessonController($this->lessonReader, $this->categoryReader));
         $this->router->addRoute('GET', '/category/([a-z\-_]+)', new CategoryController($this->lessonReader, $this->categoryReader));
-        $this->router->addRoute('GET', '/data/([0-9a-z\-_]+)', new DataController($this->lessonReader));
+        $this->router->addRoute('GET', '/data/([0-9a-z\-_]+)', new DataController($this->lessonReader, $this->courseReader));
         $this->router->route();
     }
 }

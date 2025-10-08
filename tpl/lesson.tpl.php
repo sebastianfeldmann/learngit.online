@@ -176,6 +176,10 @@
     <script>
         // Pass lesson slug to JavaScript
         window.LESSON_SLUG = '<?= $lesson['slug'] ?? '' ?>';
+        // Pass course context to JavaScript if in course context
+        <?php if ($inCourseContext): ?>
+        window.COURSE_SLUG = '<?= htmlspecialchars($courseContext['slug']) ?>';
+        <?php endif; ?>
     </script>
     <script src="/assets/js/terminal.js"></script>
 

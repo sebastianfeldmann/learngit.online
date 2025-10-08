@@ -1,6 +1,7 @@
 class GitTerminal {
     constructor() {
         this.lessonSlug = window.LESSON_SLUG;
+        this.courseSlug = window.COURSE_SLUG || null;
         this.lesson = null;
         this.currentStep = 0;
         this.commandHistory = [];
@@ -51,7 +52,13 @@ class GitTerminal {
     }
     
     async loadLesson() {
-        const response = await fetch(`/data/${this.lessonSlug}`);
+        // Check if we're in course context and add course parameter
+        let url = `/data/${this.lessonSlug}`;
+        if (this.courseSlug) {
+            url += `?course=${this.courseSlug}`;
+        }
+        
+        const response = await fetch(url);
         if (!response.ok) {
             throw new Error(`Failed to load lesson: ${response.status}`);
         }
@@ -278,9 +285,12 @@ class GitTerminal {
         
         // Previous Lesson button (if exists)
         if (navigation && navigation.previous) {
+            const prevUrl = this.courseSlug 
+                ? `/course/${this.courseSlug}/${navigation.previous.slug}`
+                : `/lesson/${navigation.previous.slug}`;
             const prevButton = this.createNavigationButton(
                 '← ' + navigation.previous.title,
-                () => window.location.href = `/lesson/${navigation.previous.slug}`
+                () => window.location.href = prevUrl
             );
             buttonsDiv.appendChild(prevButton);
         }
@@ -301,9 +311,12 @@ class GitTerminal {
         
         // Next Lesson button (if exists)
         if (navigation && navigation.next) {
+            const nextUrl = this.courseSlug 
+                ? `/course/${this.courseSlug}/${navigation.next.slug}`
+                : `/lesson/${navigation.next.slug}`;
             const nextButton = this.createNavigationButton(
                 navigation.next.title + ' →',
-                () => window.location.href = `/lesson/${navigation.next.slug}`
+                () => window.location.href = nextUrl
             );
             buttonsDiv.appendChild(nextButton);
         }
@@ -619,10 +632,16 @@ class GitTerminal {
                 
                 if (deltaX > 0 && navigation && navigation.previous) {
                     // Swipe right - go to previous lesson
-                    window.location.href = `/lesson/${navigation.previous.slug}`;
+                    const prevUrl = this.courseSlug 
+                        ? `/course/${this.courseSlug}/${navigation.previous.slug}`
+                        : `/lesson/${navigation.previous.slug}`;
+                    window.location.href = prevUrl;
                 } else if (deltaX < 0 && navigation && navigation.next) {
                     // Swipe left - go to next lesson
-                    window.location.href = `/lesson/${navigation.next.slug}`;
+                    const nextUrl = this.courseSlug 
+                        ? `/course/${this.courseSlug}/${navigation.next.slug}`
+                        : `/lesson/${navigation.next.slug}`;
+                    window.location.href = nextUrl;
                 }
             }
         });
