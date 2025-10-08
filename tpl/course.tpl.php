@@ -15,8 +15,8 @@ $breadcrumb = [
         'name' => 'Learning'
     ],
     [
-        'url'  => '/course/' . htmlspecialchars($course['slug']),
-        'name' => htmlspecialchars($course['title'])
+        'url'  => '/course/' . $course['slug'],
+        'name' => $course['title']
     ]
 ];
 ?>

@@ -10,7 +10,7 @@
             <?php foreach ($breadcrumb as $index => $item): ?>
             <?php if ($index < count($breadcrumb) - 1): ?>
             <li class="breadcrumb-item">
-                <a class="link-body-emphasis fw-semibold text-decoration-none" href="<?=$item['url'] ?>"><?=$item['name'] ?></a>
+                <a class="link-body-emphasis fw-semibold text-decoration-none" href="<?=$item['url'] ?>"><?=htmlspecialchars($item['name']) ?></a>
             </li>
             <?php else: ?>
             <li class="breadcrumb-item active" aria-current="page">

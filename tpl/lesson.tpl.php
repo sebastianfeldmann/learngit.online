@@ -25,12 +25,12 @@
              'name' => 'Learning',
          ],
          [
-             'url'  => '/course/' . htmlspecialchars($courseContext['slug']),
-             'name' => htmlspecialchars($courseContext['title']),
+             'url'  => '/course/' . $courseContext['slug'],
+             'name' => $courseContext['title'],
          ],
          [
-            'url'  => '/course/' . htmlspecialchars($courseContext['slug']) . '/' . htmlspecialchars($lesson['slug']),
-            'name' => htmlspecialchars($lesson['title']),
+            'url'  => '/course/' . $courseContext['slug'] . '/' . $lesson['slug'],
+            'name' => $lesson['title'],
         ]
      ];
  } else {
